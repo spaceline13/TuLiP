@@ -25,6 +25,267 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <style>
+      .pagination {
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0;
+        border-radius: 0;
+      }
+      .pagination > li:first-child > a,
+      .pagination > li:first-child > span {
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0;
+        border-radius: 0;
+        margin-left: 0;
+        border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
+      }
+      .pagination > li:last-child > a,
+      .pagination > li:last-child > span {
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0;
+        border-radius: 0;
+      }
+      .pagination > .active > a, .pagination > .active a:focus, .pagination > .active a:hover
+      > span, .pagination > .active span:focus, .pagination > .active span:hover {
+        background-color: #1D92AF;
+      }
+
+      /* custom pagination */
+      .pagination.borderless > li > a,
+      .pagination.borderless > li > span {
+        border: none;
+        color: inherit;
+        background-color: transparent;
+      }
+      .pagination.borderless > li > a:hover, .pagination.borderless > li > a:focus,
+      .pagination.borderless > li > span:hover,
+      .pagination.borderless > li > span:focus {
+        color: #f2f2f2;
+        background-color: #999;
+      }
+      .pagination.borderless > li.active > a,
+      .pagination.borderless > li.active > span {
+        color: #f2f2f2;
+        background-color: #999;
+      }
+      .pagination.borderless > li.active > a:hover, .pagination.borderless > li.active > a:focus,
+      .pagination.borderless > li.active > span:hover,
+      .pagination.borderless > li.active > span:focus {
+        color: #f2f2f2;
+        background-color: #999;
+      }
+      .pagination.borderless > .disabled > span,
+      .pagination.borderless > .disabled > span:hover,
+      .pagination.borderless > .disabled > span:focus,
+      .pagination.borderless > .disabled > a,
+      .pagination.borderless > .disabled > a:hover,
+      .pagination.borderless > .disabled > a:focus {
+        background-color: transparent;
+      }
+
+      /* PAGINATION */
+      .pagination > li > a,
+      .pagination > li > span {
+        text-decoration: none;
+        color: #c31632;
+        background-color: white;
+        border: 0;
+        margin-left: 0;
+        border-radius: 0!important;
+      }
+      .pagination.blue > li > a,
+      .pagination.blue > li > span > li > span {
+        color: rgb(0,110,183);
+      }
+      .pagination.light-blue > li > a,
+      .pagination.light-blue > li > span > li > span {
+        color: rgb(0,166,208);
+      }
+      .pagination.green > li > a,
+      .pagination.green > li > span > li > span {
+        color: #189870;
+      }
+      .pagination.light-green > li > a,
+      .pagination.light-green > li > span > li > span {
+        color: rgb(200,212,0);
+      }
+      .pagination.orange > li > a,
+      .pagination.orange > li > span > li > span {
+        color: rgb(245,157,36);
+      }
+      .pagination > li > a:hover,
+      .pagination > li > span:hover,
+      .pagination > li > a:focus,
+      .pagination > li > span:focus {
+        color: #c31632;
+        background-color: #eee;
+      }
+      .pagination.blue > li > a:hover,
+      .pagination.blue > li > span:hover,
+      .pagination.blue > li > a:focus,
+      .pagination.blue > li > span:focus > li > span:focus {
+        color: rgb(0,110,183);
+      }
+      .pagination.light-blue > li > a:hover,
+      .pagination.light-blue > li > span:hover,
+      .pagination.light-blue > li > a:focus,
+      .pagination.light-blue > li > span:focus > li > span:focus {
+        color: rgb(0,166,208);
+      }
+      .pagination.green > li > a:hover,
+      .pagination.green > li > span:hover,
+      .pagination.green > li > a:focus,
+      .pagination.green > li > span:focus > li > span:focus {
+        color: #189870;
+      }
+      .pagination.light-green > li > a:hover,
+      .pagination.light-green > li > span:hover,
+      .pagination.light-green > li > a:focus,
+      .pagination.light-green > li > span:focus > li > span:focus {
+        color: rgb(200,212,0);
+      }
+      .pagination.orange > li > a:hover,
+      .pagination.orange > li > span:hover,
+      .pagination.orange > li > a:focus,
+      .pagination.orange > li > span:focus > li > span:focus {
+        color: rgb(245,157,36);
+      }
+      .pagination > .active > a,
+      .pagination > .active > span,
+      .pagination > .active > a:hover,
+      .pagination > .active > span:hover,
+      .pagination > .active > a:focus,
+      .pagination > .active > span:focus {
+        color: white;
+        background-color: #c31632;
+        z-index: unset!important;
+      }
+      .pagination.blue > .active > a,
+      .pagination.blue > .active > span,
+      .pagination.blue > .active > a:hover,
+      .pagination.blue > .active > span:hover,
+      .pagination.blue > .active > a:focus,
+      .pagination.blue > .active > span:focus {
+        color: white;
+        background-color: rgb(0,110,183);
+        z-index: unset!important;
+      }
+      .pagination.light-blue > .active > a,
+      .pagination.light-blue > .active > span,
+      .pagination.light-blue > .active > a:hover,
+      .pagination.light-blue > .active > span:hover,
+      .pagination.light-blue > .active > a:focus,
+      .pagination.light-blue > .active > span:focus {
+        color: white;
+        background-color: rgb(0,166,208);
+        z-index: unset!important;
+      }
+      .pagination.green > .active > a,
+      .pagination.green > .active > span,
+      .pagination.green > .active > a:hover,
+      .pagination.green > .active > span:hover,
+      .pagination.green > .active > a:focus,
+      .pagination.green > .active > span:focus {
+        color: white;
+        background-color: #189870;
+        z-index: unset!important;
+      }
+      .pagination.light-green > .active > a,
+      .pagination.light-green > .active > span,
+      .pagination.light-green > .active > a:hover,
+      .pagination.light-green > .active > span:hover,
+      .pagination.light-green > .active > a:focus,
+      .pagination.light-green > .active > span:focus {
+        color: white;
+        background-color: rgb(200,212,0);
+        z-index: unset!important;
+      }
+      .pagination.orange > .active > a,
+      .pagination.orange > .active > span,
+      .pagination.orange > .active > a:hover,
+      .pagination.orange > .active > span:hover,
+      .pagination.orange > .active > a:focus,
+      .pagination.orange > .active > span:focus {
+        color: white;
+        background-color: rgb(245,157,36);
+        z-index: unset!important;
+      }
+      .pagination > .disabled > span,
+      .pagination > .disabled > span:hover,
+      .pagination > .disabled > span:focus,
+      .pagination > .disabled > a,
+      .pagination > .disabled > a:hover,
+      .pagination > .disabled > a:focus {
+        color: #c31632;
+        background-color: #c31632;
+      }
+      .pagination.blue > .disabled > span,
+      .pagination.blue > .disabled > span:hover,
+      .pagination.blue > .disabled > span:focus,
+      .pagination.blue > .disabled > a,
+      .pagination.blue > .disabled > a:hover,
+      .pagination.blue > .disabled > a:focus {
+        color: rgb(0,110,183);
+        background-color: rgb(0,110,183);
+      }
+      .pagination.light-blue > .disabled > span,
+      .pagination.light-blue > .disabled > span:hover,
+      .pagination.light-blue > .disabled > span:focus,
+      .pagination.light-blue > .disabled > a,
+      .pagination.light-blue > .disabled > a:hover,
+      .pagination.light-blue > .disabled > a:focus {
+        color: rgb(0,166,208);
+        background-color: rgb(0,166,208);
+      }
+      .pagination.green > .disabled > span,
+      .pagination.green > .disabled > span:hover,
+      .pagination.green > .disabled > span:focus,
+      .pagination.green > .disabled > a,
+      .pagination.green > .disabled > a:hover,
+      .pagination.green > .disabled > a:focus {
+        color: #189870;
+        background-color: #189870;
+      }
+      .pagination.light-green > .disabled > span,
+      .pagination.light-green > .disabled > span:hover,
+      .pagination.light-green > .disabled > span:focus,
+      .pagination.light-green > .disabled > a,
+      .pagination.light-green > .disabled > a:hover,
+      .pagination.light-green > .disabled > a:focus {
+        color: rgb(200,212,0);
+        background-color: rgb(200,212,0);
+      }
+      .pagination.orange > .disabled > span,
+      .pagination.orange > .disabled > span:hover,
+      .pagination.orange > .disabled > span:focus,
+      .pagination.orange > .disabled > a,
+      .pagination.orange > .disabled > a:hover,
+      .pagination.orange > .disabled > a:focus {
+        color: rgb(245,157,36);
+        background-color: rgb(245,157,36);
+      }
+
+      ul.pagination {
+        margin: 0;
+      }
+
+      /* Fixes overriding of filter's expanded menu */
+      .Select-menu-outer {
+        z-index: 999 !important;
+      }
+
+      @media screen and (max-width: 480px)
+      {
+        .widget-header-toolbar .dropdown-menu.dropdown-menu-right {
+          right: 0;
+          left: auto;
+        }
+      }
+
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
